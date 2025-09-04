@@ -61,5 +61,8 @@
     "svgo:min": "npm run _svgo:min -- -f flags/1x1 && npm run _svgo:min -- -f flags/4x3",
     "svgo:pretty": "npm run _svgo:pretty -- -f flags/1x1 && npm run _svgo:pretty -- -f flags/4x3"
   },
-  "version": "2.9.0"
+  "version": "2.9.0",
+  "dependencies": {
+    "@dataconnect/generated": "file:src/dataconnect-generated"
+  }
 }

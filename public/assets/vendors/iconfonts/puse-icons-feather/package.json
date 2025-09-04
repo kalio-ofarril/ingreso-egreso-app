@@ -68,5 +68,8 @@
     "prepublish": "make build-dev"
   },
   "style": "feather.css",
-  "version": "1.1.0"
+  "version": "1.1.0",
+  "dependencies": {
+    "@dataconnect/generated": "file:src/dataconnect-generated"
+  }
 }

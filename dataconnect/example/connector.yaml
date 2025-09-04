@@ -1,0 +1,38 @@
+connectorId: example
+generate:
+  javascriptSdk:
+    - outputDir: ../../src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../..
+      react: false
+      angular: true
+    - outputDir: ../../public/assets/vendors/iconfonts/mdi/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../public/assets/vendors/iconfonts/mdi
+      react: false
+      angular: false
+    - outputDir: ../../public/assets/vendors/iconfonts/ionicons/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../public/assets/vendors/iconfonts/ionicons
+      react: false
+      angular: false
+    - outputDir: ../../public/assets/vendors/iconfonts/puse-icons-feather/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../public/assets/vendors/iconfonts/puse-icons-feather
+      react: false
+      angular: false
+    - outputDir: ../../public/assets/vendors/iconfonts/font-awesome/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../public/assets/vendors/iconfonts/font-awesome
+      react: false
+      angular: false
+    - outputDir: ../../public/assets/vendors/iconfonts/flag-icon-css/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../public/assets/vendors/iconfonts/flag-icon-css
+      react: false
+      angular: false
+    - outputDir: ../../public/assets/vendors/iconfonts/ionicons/icons/src/dataconnect-generated
+      package: "@dataconnect/generated"
+      packageJsonDir: ../../public/assets/vendors/iconfonts/ionicons/icons
+      react: false
+      angular: false

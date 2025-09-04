@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "staging": "ingreso-egreso-app-64260",
+    "default": "ingreso-egreso-app-64260"
+  },
+  "targets": {},
+  "etags": {}
+}

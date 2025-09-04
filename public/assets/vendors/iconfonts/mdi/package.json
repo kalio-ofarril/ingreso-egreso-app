@@ -62,5 +62,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "style": "css/materialdesignicons.css",
-  "version": "3.3.92"
+  "version": "3.3.92",
+  "dependencies": {
+    "@dataconnect/generated": "file:src/dataconnect-generated"
+  }
 }
