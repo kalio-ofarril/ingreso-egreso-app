@@ -9,6 +9,10 @@ import {
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../app.reducer';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import * as ui from '../../shared/ui.actions';
 
 @Component({
   selector: 'app-register',
@@ -20,11 +24,21 @@ export class RegisterComponent implements OnInit {
   private router = inject(Router);
 
   registroForm!: FormGroup;
+  isLoading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) {}
+    private authService: AuthService,
+    private store: Store<AppState>
+  ) {
+    this.store
+      .select('ui')
+      .pipe(takeUntilDestroyed())
+      .subscribe((ui) => {
+        this.isLoading = ui.isLoading;
+        console.log('register sub');
+      });
+  }
 
   ngOnInit(): void {
     this.registroForm = this.formBuilder.group({
@@ -38,11 +52,16 @@ export class RegisterComponent implements OnInit {
     if (this.registroForm.invalid) {
       return;
     }
+    this.store.dispatch(ui.isLoading());
     const { nombre, email, password } = this.registroForm.value;
     this.authService
       .createUsuario(nombre, email, password)
-      .then((credenciales) => this.router.navigate(['/']))
+      .then((credenciales) => {
+        this.store.dispatch(ui.stopLoading());
+        this.router.navigate(['/']);
+      })
       .catch((e) => {
+        this.store.dispatch(ui.stopLoading());
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
