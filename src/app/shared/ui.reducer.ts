@@ -6,10 +6,10 @@ export interface uiState {
 }
 export const initialState: uiState = { isLoading: false };
 
-export const setLoading = createAction(
-  '[UI] Set Loading',
-  props<{ isLoading: boolean }>()
-);
+// export const setLoading = createAction(
+//   '[UI] Set Loading',
+//   props<{ isLoading: boolean }>()
+// );
 
 const reducer = createReducer(
   initialState,

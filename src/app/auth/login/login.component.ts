@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
       .pipe(takeUntilDestroyed())
       .subscribe((ui) => {
         this.cargando = ui.isLoading;
-        console.log('load subs');
       });
   }
 

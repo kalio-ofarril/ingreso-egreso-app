@@ -19,7 +19,7 @@ import { docData, Firestore, setDoc } from '@angular/fire/firestore';
 import { doc } from 'firebase/firestore';
 import { Store } from '@ngrx/store';
 import * as authActions from '../auth/auth.actions';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { unSetItems } from '../ingreso-egreso/ingreso-egreso.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +28,12 @@ export class AuthService implements OnInit {
   private auth = inject(Auth);
   private firestore = inject(Firestore);
   private store = inject(Store);
+
+  private _user!: Usuario | null;
+
+  get user() {
+    return this._user;
+  }
 
   ngOnInit(): void {}
 
@@ -38,7 +44,9 @@ export class AuthService implements OnInit {
         switchMap((fuser) => {
           if (!fuser) {
             // Signed out: clear store and stop inner stream
+            this._user = null;
             this.store.dispatch(authActions.unSetUser());
+            this.store.dispatch(unSetItems());
             return of(null);
           }
           const ref = doc(this.firestore, `${fuser.uid}/usuario`);
@@ -54,6 +62,7 @@ export class AuthService implements OnInit {
         // Push to the store
         tap((user) => {
           if (user) {
+            this._user = user;
             this.store.dispatch(authActions.setUser({ user }));
           }
         })

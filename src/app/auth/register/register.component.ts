@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
       .pipe(takeUntilDestroyed())
       .subscribe((ui) => {
         this.isLoading = ui.isLoading;
-        console.log('register sub');
       });
   }
 
