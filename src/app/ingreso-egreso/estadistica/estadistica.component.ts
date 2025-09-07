@@ -3,7 +3,6 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IngresoEgreso } from '../../models/ingreso-egreso.model';
-import { ChartHostComponent } from '../../shared/chart-host-component';
 
 // ✅ ng2-charts + chart.js imports
 import { BaseChartDirective } from 'ng2-charts';
@@ -20,7 +19,7 @@ Chart.register(...registerables); // register controllers once
 @Component({
   selector: 'app-estadistica',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, ChartHostComponent, BaseChartDirective],
+  imports: [CommonModule, CurrencyPipe],
   templateUrl: './estadistica.component.html',
 })
 export class EstadisticaComponent {
